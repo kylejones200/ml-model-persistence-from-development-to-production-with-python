@@ -1,12 +1,16 @@
+---
+author: "Kyle Jones"
+date_published: "July 18, 2025"
+date_exported_from_medium: "November 10, 2025"
+canonical_link: "https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5"
+---
+
 # ML Model Persistence From Development to Production with Python Time series models need to work beyond development. Accuracy in a
-notebook means little if the model cannot be reused, tracked, or
-updated.
+notebook means little if the model cannot be reused, tracked, or updated.
 
-::::::::### ML Model Persistence From Development to Production with Python 
+### ML Model Persistence From Development to Production with Python 
 
-Time series models need to work beyond development. Accuracy in a
-notebook means little if the model cannot be reused, tracked, or
-updated.
+Time series models need to work beyond development. Accuracy in a notebook means little if the model cannot be reused, tracked, or updated.
 
 Production systems require:
 
@@ -16,8 +20,7 @@ Production systems require:
 4.  [Performance monitoring]
 5.  [Reproducibility across teams and systems]
 
-Let's walk through a practical workflow for model persistence,
-versioning, and performance tracking.
+Let's walk through a practical workflow for model persistence, versioning, and performance tracking.
 
 ### Development and Initial Save
 Train and test your model, then save it with full metadata.
@@ -123,8 +126,7 @@ recent = trends["mse_rolling_avg"].iloc[-1]
 ```
 
 ### Common Production Scenarios
-Let's cover some common scenarios for data science teams. After a model
-is create, we may need to update it.
+Let's cover some common scenarios for data science teams. After a model is create, we may need to update it.
 
 This approach focuses on weekly, regular model updates.
 
@@ -136,8 +138,7 @@ def weekly_model_update():
         send_alert(f"Model update failed: {message}")
 ```
 
-Another way to update things is using A/B Testing where we have two
-models running in production at the same time.
+Another way to update things is using A/B Testing where we have two models running in production at the same time.
 
 ```python
 def ab_test_new_model(new_model, test_days=7):
@@ -150,8 +151,7 @@ def ab_test_new_model(new_model, test_days=7):
     return compare_results(results)
 ```
 
-If we promote a model to production and it doesn't work, we can use
-Emergency Rollback to return to the previous, stable version.
+If we promote a model to production and it doesn't work, we can use Emergency Rollback to return to the previous, stable version.
 
 ```python
 def rollback_model(model_name, version):
@@ -187,11 +187,9 @@ path = persistence.save_model(model, model_name, metadata)
         })
     return tracker.analyze_performance_trend()
 ```
-::::### Best Practices 
+### Best Practices 
 
-Use Version History to track the current and past versions. This lets
-you use tools like Git and set up automatic hooks for things like AWS
-Lambda with \$LATEST
+Use Version History to track the current and past versions. This lets you use tools like Git and set up automatic hooks for things like AWS Lambda with \$LATEST
 
 ```python
 def get_model_version_history(persistence, model_name):
@@ -203,8 +201,7 @@ def get_model_version_history(persistence, model_name):
     return sorted(history, key=lambda x: float(x["model_version"]))
 ```
 
-And while we never want bad things to happen, they sometimes do. So data
-scientists should back up their models just in case.
+And while we never want bad things to happen, they sometimes do. So data scientists should back up their models just in case.
 
 ```python
 def create_model_backup(persistence, model_name):
@@ -218,15 +215,4 @@ def create_model_backup(persistence, model_name):
     model, metadata = persistence.load_model(model_name)
     persistence.save_model(model, str(backup_path), metadata)
 ```
-::::Production-ready time series forecasting depends on robust model
-management. Save models with full metadata. Track their performance.
-Update and roll back with confidence. You do not need a complex MLOps
-platform to do this well. Start with clean code and a disciplined
-workflow. Add automation later.
-::::::::::::::::By [Kyle Jones](https://medium.com/@kyle-t-jones) on
-[July 18, 2025](https://medium.com/p/86980ea695f5).
-
-[Canonical
-link](https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5)
-
-Exported from [Medium](https://medium.com) on November 10, 2025.
+Production-ready time series forecasting depends on robust model management. Save models with full metadata. Track their performance. Update and roll back with confidence. You do not need a complex MLOps platform to do this well. Start with clean code and a disciplined workflow. Add automation later.
