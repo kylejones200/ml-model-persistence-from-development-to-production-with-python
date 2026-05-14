@@ -1,7 +1,7 @@
 # ML Model Persistence From Development to Production with Python
 
-**Published:** 2025-07-18
-**Medium:** [https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5](https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5)
+Published: 2025-07-18
+Medium: [https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5](https://medium.com/@kyle-t-jones/ml-model-persistence-from-development-to-production-with-python-86980ea695f5)
 
 ## About
 
