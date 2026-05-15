@@ -209,9 +209,8 @@ def create_model_backup(persistence, model_name):
     backup_dir.mkdir(exist_ok=True)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_path = backup_dir / f"{model_name}_{timestamp}"
-```
 
-``` 
+
     model, metadata = persistence.load_model(model_name)
     persistence.save_model(model, str(backup_path), metadata)
 ```
